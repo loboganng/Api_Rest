@@ -18,7 +18,7 @@ Every architectural decision follows modern TypeScript best practices, showcasin
 
 ---
 
-##  Tecnologias utilizadas
+##  Technologies used
 
 - **Node.js**
 - **TypeScript**
