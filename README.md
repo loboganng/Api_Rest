@@ -1,21 +1,34 @@
-** RESTful API Practice: TypeScript + Node.js + Express + Zod **
+#  RESTful API Practice: TypeScript + Node.js + Express + Zod 
 
 This project demonstrates production-ready REST API patterns using Node.js, Express.js, and Zod validation. 
 Every architectural decision follows modern TypeScript best practices, showcasing clean separation of concerns, type-safe middleware, and robust error handling.
 
+---
 
-** Key features implemented **
 
-- RESTful Controllers (Index/Create patterns)
-- Zod Runtime Validation with custom messages
+## Key features implemented
+
+- RESTful Controllers **(Index/Create patterns)**
+- **Zod** Runtime Validation with custom messages
 - Type-Augmented Express request interface
 - Custom middleware pipeline
 - Global error boundaries (AppError + ZodError)
 - Modular router architecture
-- Proper HTTP Status codes (201 Created)
+- Proper **HTTP Status codes (201 Created)**
 
+---
 
-** Architecture Overview **
+##  Tecnologias utilizadas
+
+- **Node.js**
+- **TypeScript**
+- **Express.js**
+- **Zod**
+- ** Git e GitHub para versionamento de código **
+
+---
+
+## Architecture Overview 
 
 src/
 ├── controllers/     # REST Controllers (ProductsController)
@@ -24,10 +37,10 @@ src/
 ├── utils/           # AppError + Type declarations
 └── app.ts           # Express setup + Error handling
 
+---
 
-
-** Code Highlight **
-
+## Code Highlight 
+```ts
 const bodySchema = z.object({
   name: z.string()
     .min(6, { message: "Name must be 6 characters minimum." })
@@ -37,10 +50,11 @@ const bodySchema = z.object({
     .positive({ message: "Price must be positive" })
     .gte(50)
 })
+```
+---
 
-
-** Type-Safe Middleware **
-
+## Type-Safe Middleware 
+```ts
 declare namespace Express {
   export interface Request { user_id: string }
 }
@@ -50,10 +64,12 @@ export function myMiddleware(req: Request, res: Response, next: NextFunction) {
   console.log("Middleware working")
   next()
 }
+```
 
+---
 
-** Production Error-handling **
-
+##  Production Error-handling
+```ts
 app.use((error: any, req: Request, res: Response, _: NextFunction) => {
   if (error instanceof AppError) {
     return res.status(error.statusCode).json({ message: error.message })
@@ -66,9 +82,10 @@ app.use((error: any, req: Request, res: Response, _: NextFunction) => {
   }
   res.status(500).json({ message: error.message })
 })
+```
+---
 
-
-** Learning outcomes **
+## Learning outcomes
 
 - REST Conventions: INDEX(List), CREATE(Post) patterns
 - Zod Mastery: Chaining .min(), .positive(), .gte(), custom messages
@@ -77,15 +94,17 @@ app.use((error: any, req: Request, res: Response, _: NextFunction) => {
 - Error Boundaries: Custom AppError + ZodError formatting
 - Modularity: Feature-based routing (productsRoutes)
 
+---
 
-** Quick Start **
-
+## Quick Start
+```
 npm install
 npm start  #http://localhost:3333
 npm run dev
+```
+---
 
-
-** Future enhancements **
+## Future enhancements
 
 - Prisma + PostgreSQL integration
 - JWT Authentication 
