@@ -24,19 +24,19 @@ Every architectural decision follows modern TypeScript best practices, showcasin
 - **TypeScript**
 - **Express.js**
 - **Zod**
-- ** Git e GitHub para versionamento de código **
+- **Git e GitHub para versionamento de código**
 
 ---
 
 ## Architecture Overview 
-
+```
 src/
 ├── controllers/     # REST Controllers (ProductsController)
 ├── middleware/      # Custom middleware (myMiddleware)  
 ├── routes/          # Modular routing (productsRoutes)
 ├── utils/           # AppError + Type declarations
 └── app.ts           # Express setup + Error handling
-
+```
 ---
 
 ## Code Highlight 
